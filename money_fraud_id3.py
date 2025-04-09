@@ -5,8 +5,8 @@ from sklearn.metrics import accuracy_score
 import pandas as pd
 
 # Load the Iris dataset
-df = pd.read_csv("data_banknote_authentication.csv")
-X, y = df., iris.target
+df = pd.read_csv("./data/data_banknote_authentication.csv")
+X, y = df.drop(columns=['Classifier']), df['Classifier']
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
