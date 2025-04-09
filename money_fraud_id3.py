@@ -1,4 +1,3 @@
-from sklearn.datasets import load_iris
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -6,7 +5,7 @@ from sklearn.metrics import f1_score
 from sklearn.metrics import roc_auc_score
 import pandas as pd
 
-# Load the Iris dataset
+# Load our dataset
 df = pd.read_csv("./data/data_banknote_authentication.csv")
 X, y = df.drop(columns=['Classifier']), df['Classifier']
 
