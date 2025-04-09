@@ -2,6 +2,8 @@ from sklearn.datasets import load_iris
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import f1_score
+from sklearn.metrics import roc_auc_score
 import pandas as pd
 
 # Load the Iris dataset
@@ -23,3 +25,11 @@ y_pred = id3_tree.predict(X_test)
 # Evaluate accuracy
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {accuracy:.2f}")
+
+# Evaluate f1 score
+f1 = f1_score(y_test, y_pred)
+print(f"F1 Score: {f1:.2f}")
+
+# ROC AUC score
+roc_auc = roc_auc_score(y_test, y_pred)
+print(f"ROC-AUC Score: {roc_auc:.2f}")
