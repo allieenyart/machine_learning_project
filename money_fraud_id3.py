@@ -4,6 +4,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import f1_score
 from sklearn.metrics import roc_auc_score
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Load our dataset
 df = pd.read_csv("./data/data_banknote_authentication.csv")
@@ -32,3 +33,12 @@ print(f"F1 Score: {f1:.2f}")
 # ROC AUC score
 roc_auc = roc_auc_score(y_test, y_pred)
 print(f"ROC-AUC Score: {roc_auc:.2f}")
+
+# Graph
+importances = id3_tree.feature_importances_
+feature_names = X.columns
+
+plt.barh(feature_names, importances)
+plt.xlabel("Feature Importance")
+plt.title("ID3 Feature Importance")
+plt.show()
