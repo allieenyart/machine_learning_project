@@ -16,9 +16,6 @@ import matplotlib.pyplot as plt
 df = pd.read_csv("./data/data_banknote_authentication.csv")
 X, y = df.drop(columns=['Classifier']), df['Classifier']
 
-# Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
 # Create an ID3 decision tree classifier (uses entropy as the splitting criterion) for using k-fold
 id3_tree_cv = DecisionTreeClassifier(criterion="entropy", random_state=42)
 
@@ -33,6 +30,9 @@ cv_auc = cross_val_score(id3_tree_cv, X, y, cv=kf, scoring='roc_auc')
 print(f"Cross-validated Accuracy: {cv_accuracy.mean():.2f} +/- {cv_accuracy.std():.2f}")
 print(f"Cross-validated F1 Score: {cv_f1.mean():.2f} +/- {cv_f1.std():.2f}")
 print(f"Cross-validated ROC-AUC: {cv_auc.mean():.2f} +/- {cv_auc.std():.2f}")
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # New tree for regular ID3 splitting
 id3_tree = DecisionTreeClassifier(criterion="entropy", random_state=42)
